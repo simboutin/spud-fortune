@@ -1,24 +1,31 @@
-# README
+# SPUD FORTUNE
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is an API application that tracks the share prices of potatoes and calculates the maximum potential gain for a given date.
 
-Things you may want to cover:
+## Features
 
-* Ruby version
+- Track potato share prices for a given date
+- Calculate the maximum potential gain for a given date
 
-* System dependencies
+## Data
 
-* Configuration
+Please note that the data used in this application is fake and only includes data from 2023-12-11 to 2023-12-17.
 
-* Database creation
+## Usage: API Endpoints
 
-* Database initialization
+- `GET /potato_share_prices?date=<date>`: returns all potato share prices at the given date.
+- `GET /potato_share_prices/max_potential_gain?date=<date>`: returns the maximum potential gain for the given date.
 
-* How to run the test suite
+The date should be in the format: `YYYY-MM-DD`.
 
-* Services (job queues, cache servers, search engines, etc.)
+## Installation
 
-* Deployment instructions
+1. Clone the repository: `git clone git@github.com:simboutin/spud-fortune.git`
+2. Navigate to the project directory: `cd potato-fortune`
+3. Install the dependencies: `bundle install`
+4. Setup the database: `rails db:setup`
+5. Start the server: `rails server`
 
-* ...
+## Testing
+
+To run the tests, use the command: `rspec`
