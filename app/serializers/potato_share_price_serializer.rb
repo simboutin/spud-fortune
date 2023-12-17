@@ -6,7 +6,7 @@ class PotatoSharePriceSerializer
   def as_json(*)
     {
       'time' => @potato_share_price.time,
-      'value' => @potato_share_price.price_in_cents_to_euros
+      'value' => ConversionService.cents_to_euros(@potato_share_price.price_in_cents)
     }
   end
 end

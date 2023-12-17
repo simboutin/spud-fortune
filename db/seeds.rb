@@ -11,7 +11,7 @@ puts 'Creating fake PotatoSharePrice instances over the last 7 days...'
 
 seconds_in_7_days.times do |i|
   # Gradually increase the range of the random fluctuation over time
-  fluctuation = rand((-10 - (i / seconds_in_7_days))..(10 + (i / seconds_in_7_days)))
+  fluctuation = rand((-1 - (i / seconds_in_7_days))..(1 + (i / seconds_in_7_days)))
   price += fluctuation
 
   # Constrain price to a range of 20000 to 21000 cents
