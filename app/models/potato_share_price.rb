@@ -4,4 +4,8 @@ class PotatoSharePrice < ApplicationRecord
 
   scope :on_date,         ->(date) { where(time: date.all_day) }
   scope :ordered_by_time, -> { order(time: :asc) }
+
+  def price_in_cents_to_euros
+    price_in_cents.to_f / 100
+  end
 end

@@ -2,9 +2,9 @@ require 'rails_helper'
 
 RSpec.describe PotatoSharePrice, type: :model do
   let!(:date)                { Date.new(2023, 12, 16) }
-  let!(:potato_share_price1) { PotatoSharePrice.create!(time: DateTime.new(2023, 12, 16, 15, 0, 0), price_in_cents: 100) }
-  let!(:potato_share_price2) { PotatoSharePrice.create!(time: DateTime.new(2023, 12, 16, 12, 0, 0), price_in_cents: 200) }
-  let!(:potato_share_price3) { PotatoSharePrice.create!(time: DateTime.new(2023, 12, 15, 10, 0, 0), price_in_cents: 300) }
+  let!(:potato_share_price1) { PotatoSharePrice.create!(time: DateTime.new(2023, 12, 16, 15, 0, 0), price_in_cents: 100_00) }
+  let!(:potato_share_price2) { PotatoSharePrice.create!(time: DateTime.new(2023, 12, 16, 12, 0, 0), price_in_cents: 200_00) }
+  let!(:potato_share_price3) { PotatoSharePrice.create!(time: DateTime.new(2023, 12, 15, 10, 0, 0), price_in_cents: 300_00) }
 
   describe 'validations' do
     it 'is valid with valid time and price_in_cents' do
@@ -46,6 +46,15 @@ RSpec.describe PotatoSharePrice, type: :model do
     describe '::ordered_by_time' do
       it 'returns the potato share prices ordered by time ascending' do
         expect(PotatoSharePrice.ordered_by_time).to eq([potato_share_price3, potato_share_price2, potato_share_price1])
+      end
+    end
+  end
+
+  describe 'instance methods' do
+    describe '#price_in_cents_to_euros' do
+      it 'converts price in cents to euros' do
+        potato_share_price = PotatoSharePrice.new(price_in_cents: 100_00)
+        expect(potato_share_price.price_in_cents_to_euros).to eq(100.00)
       end
     end
   end
