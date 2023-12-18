@@ -54,9 +54,7 @@ RSpec.describe PotatoSharePrice, type: :model do
     let!(:potato_share_price4) { PotatoSharePrice.create!(time: DateTime.new(2023, 12, 16, 16, 0, 0), price_in_cents: 100_00) }
 
     describe '::max_potential_gain_on_date' do
-      before do
-        stub_const('PotatoSharePrice::DAILY_TRADE_LIMIT', 100)
-      end
+      before { stub_const('PotatoSharePrice::DAILY_TRADE_LIMIT', 100) }
 
       it 'returns the maximum potential gain in euros for the given date' do
         max_potential_gain = PotatoSharePrice.max_potential_gain_on_date(date)
@@ -69,10 +67,10 @@ RSpec.describe PotatoSharePrice, type: :model do
         expect(max_potential_gain).to be_nil
       end
 
-      it 'returns nil when max_diff_smaller_element_first returns 0' do
+      it 'returns 0 when max_diff_smaller_element_first returns 0' do
         allow(PotatoSharePrice).to receive(:max_diff_with_smaller_element_first).and_return(0)
-        max_potential_gain = PotatoSharePrice.max_potential_gain_on_date(Date.new(2023, 12, 16))
-        expect(max_potential_gain).to be_nil
+        max_potential_gain = PotatoSharePrice.max_potential_gain_on_date(date)
+        expect(max_potential_gain).to eq 0
       end
     end
 

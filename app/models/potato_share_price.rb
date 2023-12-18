@@ -1,7 +1,7 @@
 class PotatoSharePrice < ApplicationRecord
   DAILY_TRADE_LIMIT = 100
 
-  validates :time, presence: true
+  validates :time,           presence: true
   validates :price_in_cents, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
   scope :on_date,         ->(date) { where(time: date.all_day) }
@@ -13,10 +13,9 @@ class PotatoSharePrice < ApplicationRecord
                                    .pluck(:price_in_cents)
     return unless share_prices.count > 1
 
-    # Find the maximum price_in_cents difference on the selected potato share prices
-    # with the constraint that the lowest price must precede the highest one
+    # Calculate the maximum profit possible from buying and selling the selected potato share prices,
+    # ensuring that the purchase (lowest price) occurs before the sale (highest price).
     max_diff_in_cents = max_diff_with_smaller_element_first(share_prices)
-    return if max_diff_in_cents.zero?
 
     ConversionService.cents_to_euros(DAILY_TRADE_LIMIT * max_diff_in_cents)
   end
