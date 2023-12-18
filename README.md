@@ -1,15 +1,16 @@
 # SPUD FORTUNE
 
-This is an API application that tracks the share prices of potatoes and calculates the maximum potential gain for a given date.
+Spud Fortune is an API application that tracks the share prices of potatoes and calculates the maximum potential gain for a given date.
 
 ## Features
 
 - Track potato share prices for a given date
-- Calculate the maximum potential gain for a given date
+- Calculate the maximum potential gain for a given date with a daily limit of 100 shares
 
 ## Data
 
-Please note that the data used in this application is fake and only includes data from 2023-12-11 to 2023-12-17.
+Please be aware that the data within this application is simulated and strictly covers the period from December 11, 2023, to December 17, 2023.
+Prices are in € / ton.
 
 ## Usage: API Endpoints
 
