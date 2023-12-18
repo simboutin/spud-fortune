@@ -14,8 +14,8 @@ Prices are in € / ton.
 
 ## Usage: API Endpoints
 
-- `GET /potato_share_prices?date=<date>`: returns all potato share prices at the given date.
-- `GET /potato_share_prices/max_potential_gain?date=<date>`: returns the maximum potential gain for the given date.
+- `GET /api/v1/potato_share_prices?date=<date>`: returns all potato share prices at the given date.
+- `GET /api/v1/potato_share_prices/max_potential_gain?date=<date>`: returns the maximum potential gain for the given date.
 
 The date should be in the format: `YYYY-MM-DD`.
 
